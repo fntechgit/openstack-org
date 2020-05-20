@@ -226,6 +226,16 @@ class Page extends SiteTree
              unset($this->extension_instances[$extension]);
     }
 
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if (is_null($this->ParentID)) {
+            $this->ParentID = 0;
+        }
+    }
+
+
 }
 
 class Page_Controller extends ContentController

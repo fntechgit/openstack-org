@@ -300,7 +300,7 @@ class SummitSecurity extends SummitPage_Controller {
     public function CurrentSummitPage(){
         $activeSummit = Summit::ActiveSummit();
         $summitPage = SummitPage::get()->filter('SummitID', $activeSummit->ID)->first();
-        if (is_a($summitPage->Parent(),'SummitPage')) {
+        if (!is_null($summitPage) && intval($summitPage->ParentID) > 0 && is_a($summitPage->Parent(),'SummitPage')) {
             $summitPage = $summitPage->Parent();
         }
 
@@ -324,16 +324,16 @@ class SummitSecurity extends SummitPage_Controller {
     public function PresentationDeadlineText(){
         $summit = Summit::ActiveSummit();
         $page   = PresentationPage::get()->filter('SummitID', $summit->ID)->first();
-        return $page->PresentationDeadlineText;
+        return !is_null($page) ? $page->PresentationDeadlineText : '';
     }
 
     public function MetaTags()
     {
-        return ModelAsController::controller_for($this->summit_page)->MetaTags();
+        return !is_null($this->summit_page) ? ModelAsController::controller_for($this->summit_page)->MetaTags() : '';
     }
 
     public function getSummitPageText($field) {
-        return ModelAsController::controller_for($this->summit_page)->getSummitPageText($field);
+        return !is_null($this->summit_page) ? ModelAsController::controller_for($this->summit_page)->getSummitPageText($field) : '';
     }
 
 }

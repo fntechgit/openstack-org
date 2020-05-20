@@ -59,12 +59,15 @@ final class OpenStackIdAuthenticator extends Controller
 
             $member = $this->member_manager->registerByClaims($oidc->getVerifiedClaims());
             $backUrl = OpenStackIdCommon::getRedirectBackUrl();
+            // skip
+            /*
             if(!$member->hasMembershipTypeSet()) {
                 $type = $this->getRequest()->requestVar("membership-type");
                 Session::clear("BackURL");
                 if(empty($type)) $type = "foundation";
                 $backUrl = Director::absoluteURL(sprintf("/join/register/?membership-type=%s&BackURL=%s", $type, urlencode($backUrl)));
             }
+            */
             return $this->redirect($backUrl);
         }
         catch (OpenIDConnectClientException $ex) {

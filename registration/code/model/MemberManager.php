@@ -229,6 +229,7 @@ final class MemberManager implements IMemberManager
                $member->Surname        = $claims->family_name;
                $member->write();
            }
+           /*
            else{
                // member already exists , calculate membership type
                $membershipType =  IOpenStackMember::MembershipTypeNone;
@@ -239,6 +240,12 @@ final class MemberManager implements IMemberManager
                    $membershipType =  IOpenStackMember::MembershipTypeCommunity;
                }
                $member->MembershipType = $membershipType;
+               $member->write();
+           }
+           */
+           // force
+           if(!$member->isCommunityMember() && !$member->isFoundationMember()){
+               $member->convert2SiteUser();
                $member->write();
            }
 

@@ -1,4 +1,4 @@
-# Track Chairs App
+# FNreview
 
 This module provides a web application used by track chairs to vet the list of submitted presentations and create lists of their favourites, ultimately producing a singular list for each category.
 

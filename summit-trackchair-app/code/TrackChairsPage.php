@@ -16,7 +16,7 @@ class TrackChairsPage_Controller extends Page_Controller
      */
     public function getPageTitle()
     {
-       return "Track Chairs App";
+       return "FNreview";
     }
 
     private static $allowed_actions = [

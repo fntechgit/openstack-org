@@ -45,6 +45,19 @@ final class DBMigrateTask extends MigrationTask
                 }
             }
             echo "Ending DB Migration Proc ...".PHP_EOL;
+
+            echo "Running data fixes PROC".PHP_EOL;
+
+            DB::query("ALTER TABLE `Member` DROP INDEX `ExternalUserId`;");
+
+            DB::query("ALTER TABLE `Member` CHANGE `ExternalUserId` `ExternalUserId` INT(11) NULL DEFAULT NULL;");
+
+            DB::query("UPDATE Member set ExternalUserId = NULL WHERE ExternalUserId = 0;");
+
+            DB::query("ALTER TABLE `Member`ADD UNIQUE `ExternalUserId` (`ExternalUserId`) USING BTREE;");
+
+            echo "END data fixes PROC".PHP_EOL;
+
         }
         catch (ParseException $e) {
             echo printf("Unable to parse the YAML string: %s", $e->getMessage());

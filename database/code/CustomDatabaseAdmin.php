@@ -23,18 +23,7 @@ class CustomDatabaseAdmin extends DatabaseAdmin
         parent::build();
         $this->dropObsoleteTables();
         $this->buildMandatoryTables();
-        $this->fixTypes();
     }
-
-    private function fixTypes(){
-        // this is overwriten by SS
-        $sql = <<<SQL
-ALTER TABLE `Member` CHANGE `ExternalUserId` `ExternalUserId` INT(11) NULL DEFAULT NULL;
-SQL;
-
-        DB::query($sql);
-    }
-
 
     private function dropObsoleteTables(){
 

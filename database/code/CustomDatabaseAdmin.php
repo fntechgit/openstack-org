@@ -20,6 +20,9 @@ use Symfony\Component\Yaml\Yaml;
 class CustomDatabaseAdmin extends DatabaseAdmin
 {
     public function build() {
+        // drop index if exists
+        DB::query("ALTER TABLE `Member` DROP INDEX `ExternalUserId`;");
+
         parent::build();
         $this->dropObsoleteTables();
         $this->buildMandatoryTables();

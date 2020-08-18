@@ -48,7 +48,7 @@ final class DBMigrateTask extends MigrationTask
 
             echo "Running data fixes PROC".PHP_EOL;
 
-            DB::query("ALTER TABLE `Member` DROP INDEX `ExternalUserId`;");
+            // this is bc SS screw the unique index
 
             DB::query("ALTER TABLE `Member` CHANGE `ExternalUserId` `ExternalUserId` INT(11) NULL DEFAULT NULL;");
 

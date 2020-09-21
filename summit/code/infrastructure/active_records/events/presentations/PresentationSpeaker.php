@@ -1208,9 +1208,16 @@ class PresentationSpeaker extends DataObject
     public function ProfilePhoto($width = 100)
     {
         $generic_url = Director::absoluteBaseURL() . 'summit/images/generic-speaker-icon.png';
-        $img1 = $this->Photo();
-        $member = $this->Member();
-        $img2 = !is_null($member) && $member->ID > 0 ? $member->Photo() : null;
+
+        try {
+            $img1 = $this->Photo();
+            $member = $this->Member();
+            $img2 = !is_null($member) && $member->ID > 0 ? $member->Photo() : null;
+        } catch (Exception $ex) {
+            return $generic_url;
+        }
+
+
         $twitter_name = $this->TwitterName;
         if (!is_null($img1) && $img1->exists()) {
             // make it square

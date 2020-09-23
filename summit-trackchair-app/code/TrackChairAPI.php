@@ -225,14 +225,16 @@ class TrackChairAPI extends AbstractRestfulJsonApi
         $presentations = [];
         $summit = $this->getCurrentSummit();
         $summitID = $summit->ID;
+        $selection_plan = $summit->getOpenSelectionPlanForStage('Selection');
 
-        if ($summit->isSelectionOpen()) {
+        if ($selection_plan->isSelectionOpen()) {
             // Get a collection of chair-visible presentation categories
             $presentations = Presentation::get()
                 ->filter([
                     'Category.ChairVisible' => true,
                     'SummitEvent.SummitID' => $summitID,
-                    'Presentation.Status' => Presentation::STATUS_RECEIVED
+                    'Presentation.Status' => Presentation::STATUS_RECEIVED,
+                    'Presentation.SelectionPlanID' => $selection_plan->ID
                 ]);
 
             if ($r->getVar('category')) {

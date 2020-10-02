@@ -1050,6 +1050,7 @@ class TrackChairAPI_PresentationRequest extends RequestHandler
                 // if($s->Bio == NULL) $s->Bio = "&nbsp;";
                 $s->Bio = str_replace(array("\r", "\n"), "", $s->Bio);
                 $speakerData = $s->toJSON();
+                $speakerData['email'] = $s->getEmail();
                 $speakerData['photo_url'] = $s->ProfilePhoto();
                 $speakerData['available_for_bureau'] = intval($speakerData['available_for_bureau']);
                 $speakerData['is_moderator'] = (boolean)$s->ModeratorPresentations()->byID($p->ID);

@@ -90,7 +90,8 @@
     "smarcet/silverstripe-cloudassets-swift": "dev-master",
     "markguinn/silverstripe-cloudassets": "dev-master",
     "php-opencloud/openstack": "dev-master",
-    "jumbojett/openid-connect-php": "dev-master"
+    "jumbojett/openid-connect-php": "dev-master",
+    "spatie/dropbox-api": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.0",

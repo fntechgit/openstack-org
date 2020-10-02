@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ea3ecd2406159e8d34305c59238058d",
+    "content-hash": "01cab8b61c5421eb94278310aab8ddb0",
     "packages": [
         {
             "name": "composer/installers",
@@ -1078,6 +1078,55 @@
                 "spam"
             ],
             "time": "2020-05-16T20:01:55+00:00"
+        },
+        {
+            "name": "graham-campbell/guzzle-factory",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Guzzle-Factory.git",
+                "reference": "817c45a2ba491d63d66b578f243e9d8d6f9b39a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Guzzle-Factory/zipball/817c45a2ba491d63d66b578f243e9d8d6f9b39a9",
+                "reference": "817c45a2ba491d63d66b578f243e9d8d6f9b39a9",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "graham-campbell/analyzer": "^2.4 || ^3.0",
+                "phpunit/phpunit": "^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\GuzzleFactory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Provides A Simple Guzzle Factory With Good Defaults",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Guzzle",
+                "Guzzle Factory",
+                "Guzzle-Factory",
+                "http"
+            ],
+            "time": "2020-08-14T09:47:19+00:00"
         },
         {
             "name": "guzzle/guzzle",
@@ -3301,6 +3350,63 @@
                 "issues": "https://github.com/smarcet/silverstripe-cloudassets-swift/issues"
             },
             "time": "2020-02-08T21:11:03+00:00"
+        },
+        {
+            "name": "spatie/dropbox-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/dropbox-api.git",
+                "reference": "c294ce5ec69e16fb19879451e3a0944b7291f826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/dropbox-api/zipball/c294ce5ec69e16fb19879451e3a0944b7291f826",
+                "reference": "c294ce5ec69e16fb19879451e3a0944b7291f826",
+                "shasum": ""
+            },
+            "require": {
+                "graham-campbell/guzzle-factory": "^3.0||^4.0",
+                "guzzlehttp/guzzle": "^6.2||^7.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5.15|^8.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Dropbox\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex.vanderbist@gmail.com",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A minimal implementation of Dropbox API v2",
+            "homepage": "https://github.com/spatie/dropbox-api",
+            "keywords": [
+                "Dropbox-API",
+                "api",
+                "dropbox",
+                "spatie",
+                "v2"
+            ],
+            "time": "2020-09-25T08:07:36+00:00"
         },
         {
             "name": "symbiote/silverstripe-gridfieldextensions",
@@ -5774,7 +5880,8 @@
         "smarcet/silverstripe-cloudassets-swift": 20,
         "markguinn/silverstripe-cloudassets": 20,
         "php-opencloud/openstack": 20,
-        "jumbojett/openid-connect-php": 20
+        "jumbojett/openid-connect-php": 20,
+        "spatie/dropbox-api": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

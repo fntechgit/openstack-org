@@ -1141,32 +1141,27 @@ class TrackChairAPI_PresentationRequest extends RequestHandler
             $data = $p->toJSON();
             $data['title'] = $p->Title;
             $data['media_uploads_url'] = null;
+            $path = sprintf("/%s/Private/%s-%s/%s-%s",
+                MEDIA_UPLOAD_MOUNTING_FOLDER,
+                $p->Summit()->ID,
+                $p->Summit()->Slug,
+                $p->ID,
+                $p->Slug
+            );
             try {
-
                 // default visibility is RequestedVisibility.public.
-                $res = $client->createSharedLinkWithSettings(sprintf("%s/Private/%s-%s/%s-%s",
-                    MEDIA_UPLOAD_MOUNTING_FOLDER,
-                    $p->Summit()->ID,
-                    $p->Summit()->Slug,
-                    $p->ID,
-                    $p->Slug
-                ));
-
+                $res = $client->createSharedLinkWithSettings($path);
                 $data['media_uploads_url'] = $res['url'];
             }
             catch (Spatie\Dropbox\Exceptions\BadRequest $ex){
                 if($ex->dropboxCode === 'shared_link_already_exists')
                 {
                     try {
-                        $res = $client->listSharedLinks(sprintf("%s/Private/%s-%s/%s-%s",
-                            MEDIA_UPLOAD_MOUNTING_FOLDER,
-                            $p->Summit()->ID,
-                            $p->Summit()->Slug,
-                            $p->ID,
-                            $p->Slug
-                        ));
-
-                        $data['media_uploads_url'] = $res[0]['url'];
+                       $res = $client->listSharedLinks($path);
+                        foreach ($res as $entry) {
+                            if($entry['path_lower'] === strtolower($path) )
+                                $data['media_uploads_url'] = $entry['url'];
+                        }
                     }
                     catch (Exception $ex){
 

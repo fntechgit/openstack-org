@@ -208,12 +208,12 @@ export const postComment = (presentationID, commentData) => {
 	};
 }
 
-export const postEmail = (presentationID, emailData) => {
+export const postEmail = (presentationID, payload) => {
 	let { summitID } = window.TrackChairAppConfig;
 
 	return (dispatch) => {
 		
-		const key = `POST_EMAIL__${JSON.stringify(emailData || {})}`;
+		const key = `POST_EMAIL__${JSON.stringify(payload || {})}`;
 		const __id = +new Date();
 		cancel(key);
 		dispatch(beginEmail());
@@ -224,7 +224,7 @@ export const postEmail = (presentationID, emailData) => {
 		);
 		
 		const req = http.post(url)
-			.send({email: emailData.body})
+			.send(payload)
 			.type('form')
 			.end(responseHandler(dispatch, json => {
 				dispatch(successEmail(true));

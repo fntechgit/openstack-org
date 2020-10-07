@@ -157,7 +157,7 @@ class BrowseDetail extends React.Component {
 						  p.media_uploads_url &&
 						  <div className="row">
 							  <div className="col-sm-12">
-								  <a href={p.media_uploads_url} target="_blank"><i className="fa fa-download" /> Materials</a>
+								  <a href={p.media_uploads_url} target="_blank"><i className="fa fa-download" /> Materials</a>&nbsp;{p.media_uploads_url}
 							  </div>
 						  </div>
 					}

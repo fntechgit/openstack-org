@@ -15,7 +15,8 @@ class StaticSelectionsList extends React.Component {
 			<div className="selections-list static">
 				{selections.map((s,i) => (
 					<div key={s.id} className={'selection-container' + (i >= altThreshold ? ' alternate' : '')}>
-						<LeaderboardItem 							
+						<LeaderboardItem
+							id={s.id}
 							title={s.presentation.title}
 							rank={i >= altThreshold ? 'ALT' : ('#' + s.order)}
 							showRank={this.props.showRank}

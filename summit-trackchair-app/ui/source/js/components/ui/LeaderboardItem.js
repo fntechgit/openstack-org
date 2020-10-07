@@ -19,8 +19,7 @@ class LeaderboardItem extends React.Component {
 	}
 
 	render() {
-		const {title, notes, rank, children, showRank, link} = this.props;
-		
+		const {title, notes, rank, children, showRank, link, id} = this.props;
 		return (
 		<div className="vote-item">
 			<div className="row">
@@ -47,7 +46,7 @@ class LeaderboardItem extends React.Component {
 					}
 					</div>
 					<span className="vote-title">
-						<a href={link}>{title}</a>
+						<a href={link}>{id} - {title}</a>
 					</span>
 					{notes &&
 					<div className="vote-info">

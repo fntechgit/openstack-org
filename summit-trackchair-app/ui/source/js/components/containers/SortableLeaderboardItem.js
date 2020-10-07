@@ -117,11 +117,10 @@ class SortableLeaderboardItem extends Component {
     const metrics = <PresentationMetrics presentation={p} />;
 
     if (!p) return(<div></div>);
-
     return connectDragPreview(connectDropTarget(
       <div className={'selection-container' + (isDragging ? ' dragging' : '') + (isAlternate ? ' alternate' : '')}>
       {connectDragSource(<i className="drag-handle fa fa-bars" />)}
-        <LeaderboardItem {...this.props} title={p.title} notes={metrics} />
+        <LeaderboardItem {...this.props} title={p.title} presentation={p} notes={metrics} />
         <div className="selection-tools">
             <Dropdown onItemSelected={this.handleSelect} selectedText={<i className="fa fa-cog" />} caret={false}>
                 {canAddTeam &&

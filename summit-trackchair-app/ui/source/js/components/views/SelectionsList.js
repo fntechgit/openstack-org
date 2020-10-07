@@ -98,7 +98,6 @@ class SelectionsList extends React.Component {
 
 	render() {
 		if(!this.props.list) return <div>Not found</div>;
-		
 		let {selections} = this.props;
 		selections = selections || [];
 		selections.sort((a,b) => +a.order-+b.order);
@@ -123,7 +122,6 @@ class SelectionsList extends React.Component {
 					onAddToTeam={this.handleAddToTeam}
 					index={i} 
 					id={s.id}
-					presentation={s.presentation}
 					isAlternate={i >= altThreshold}
 					rank={i >= altThreshold ? 'ALT' : ('#' + s.order)}
 					column={this.props.column}

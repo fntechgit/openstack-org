@@ -17,7 +17,7 @@ export const lists = function (
                 loading: true
             };
         case 'RECEIVE_LISTS':
-            return {
+        	return {
                 ...state,
                 results: [
                 	...action.payload.response.lists

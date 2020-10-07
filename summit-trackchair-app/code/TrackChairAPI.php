@@ -1251,12 +1251,28 @@ class TrackChairAPI_PresentationRequest extends RequestHandler
             return $this->httpError(403);
         }
 
-        $email = $r->postVar('email');
+        $message = $r->postVar('message');
 
-        if ($email != null) {
+        if ($message != null) {
+
+            $cc = $r->postVar('cc');
+            $cc = explode(' ', $cc);
+            $bcc = $r->postVar('bcc');
+            $bcc = explode(' ', $bcc);
             $current_user = Member::currentUser();
 
             $ccAddresses = [];
+            $bccAddresses = [];
+
+            foreach($cc as $ccEntry){
+                if(!filter_var($ccEntry, FILTER_VALIDATE_EMAIL)) continue;
+                $ccAddresses[] = $ccEntry;
+            }
+
+            foreach($bcc as $bccEntry){
+                if(!filter_var($bccEntry, FILTER_VALIDATE_EMAIL)) continue;
+                $bccAddresses[] = $bccEntry;
+            }
 
             foreach($this->presentation->getSpeakersAndModerators() as $s) {
                 $ccAddresses[] = $s->getEmail();
@@ -1270,15 +1286,19 @@ class TrackChairAPI_PresentationRequest extends RequestHandler
             }
 
             $subject = "Track chair {$current_user->getName()} has a question about your presentation";
-            $body = $email;
             $email = EmailFactory::getInstance()->buildEmail(
             	TRACK_CHAIR_TOOL_EMAIL_FROM,
                 TRACK_CHAIR_TOOL_EMAIL_FROM,
             	$subject,
-            	$body
+                $message
             );
 
-            $email->setCC(implode(',', $ccAddresses));
+            if(count($ccAddresses) > 0)
+                $email->setCC(implode(',', $ccAddresses));
+
+            if(count($bccAddresses) > 0)
+                $email->setBcc(implode(',', $bccAddresses));
+
             $email->replyTo($current_user->Email);
             
             try {

@@ -56,7 +56,7 @@ class PresentationCommentForm extends React.Component {
 					   <div className="form-check checkbox">
 						   <input type="checkbox" id="is_public" checked={this.state.is_public} onChange={this.changePublic} />
 						   <label htmlFor="is_public">
-                               Show to Presenter
+							   Message the Submitter (not speakers) through FNspeaker.
 						   </label>
 					   </div>
 				   </div>

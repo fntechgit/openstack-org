@@ -130,6 +130,7 @@ class SelectionsList extends React.Component {
 					onUp={this.handleUp}
 					onDown={this.handleDown}
 					eventKey={i}
+					presentation={s.presentation}
 					canUp={(s.order > 1 && selections.length > 1)}
 					canDown={(s.order < selections.length)}
 					showRank={this.props.showRank}

@@ -71,6 +71,8 @@ class BrowseDetail extends React.Component {
     	const speakers = p.speakers.filter(s => !s.is_moderator);
     	const moderators = p.speakers.filter(s => !!s.is_moderator);
 
+    	const allEmails = speakers.filter(s => s.email).map(s => s.email).join(',');
+
         return (
 			<div className="wrapper wrapper-content">
 				{p.selected && !p.group_selected &&
@@ -163,12 +165,13 @@ class BrowseDetail extends React.Component {
 					}
 					<div className="row">
 						<div className="col-sm-12">
-							<a onClick={this.props.toggleEmailSpeakers}><i className="fa fa-envelope" /> Email the speakers</a>							
+							{/*<a onClick={this.props.toggleEmailSpeakers}><i className="fa fa-envelope" /> Email the speakers</a>*/}
+							<a href={`mailto:${allEmails}`}><i className="fa fa-envelope" />&nbsp;Email the speakers</a>
 						</div>
 					</div>
-					{p.showForm &&
+					{/*{p.showForm &&
 						<PresentationEmailForm />				
-					}
+					}*/}
 
 					<PresentationActivity activity={p.comments} />
 			      </div>

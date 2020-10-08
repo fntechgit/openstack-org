@@ -27,7 +27,7 @@ export default ({
 	        	<p><i className="fa fa-twitter"></i> {twitter}</p>
 	    	}
             {email && email != '' &&
-            <p><a href={`mailto:${email}`}><i className="fa fa-envelope"></i>&nbsp;Send email to this speaker</a></p>
+            <p><a href={`mailto:${email}`} target="_blank"><i className="fa fa-envelope"></i>&nbsp;Send email to this speaker</a></p>
             }
         </div>
     </div>

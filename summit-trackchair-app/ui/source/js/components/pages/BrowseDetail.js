@@ -166,7 +166,7 @@ class BrowseDetail extends React.Component {
 					<div className="row">
 						<div className="col-sm-12">
 							{/*<a onClick={this.props.toggleEmailSpeakers}><i className="fa fa-envelope" /> Email the speakers</a>*/}
-							<a href={`mailto:${allEmails}`}><i className="fa fa-envelope" />&nbsp;Email the speakers</a>
+							<a href={`mailto:${allEmails}`} target="_blank"><i className="fa fa-envelope" />&nbsp;Email the speakers</a>
 						</div>
 					</div>
 					{/*{p.showForm &&
